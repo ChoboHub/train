@@ -1,0 +1,331 @@
+@import "variables";
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0px;
+  empty-cells: show;
+  border: none;
+
+  thead, tbody {
+    tr {
+      th, td {
+        &.left {
+          text-align: left;
+        }
+        &.right {
+          text-align: right;
+        }
+        &.date {
+          width: 80px;
+        }
+        &.icon {
+          width: 16px;
+        }
+        &.handle {
+          width: 11px;
+        }
+        &.minimum {
+          width: 1%
+        }
+
+        img.field_info {
+          float: right;
+        }
+        // a cell with an (?) image to show a tooltip
+      }
+    }
+  }
+}
+
+// The default look for every table in the application
+//table.medications {font-size: 0.9em;}
+table.styled {
+  position: relative;
+  width: 100%;
+
+  &.small_line_height {
+    tr {
+      th, td { line-height: normal; }
+    }
+  }
+
+  &.medium_line_height {
+    tr {
+      th, td { line-height: 25px; }
+    }
+  }
+
+  &.medications {
+    font-size: 0.9em;
+    .medication {
+      .start_time, .end_time { font-weight: bold; }
+      .in_past { color: #c3613f; }
+      .today { color: #090; }
+      .in_future { color: #4169e1; }
+      &.is_allergic .med_name, &.is_allergic .med_name a { color: #B00; }
+      .renew { width: 80px; }
+    }
+  }
+
+  &.patient_medical_notes {
+    font-size: 0.9em;
+    tr.todays_note td {
+      background-color: #fafad2;
+    }
+  }
+
+  .chzn-container {
+    vertical-align: middle;
+  }
+
+  thead, tbody {
+    tr.separator {
+      th, td {
+        background-color: $dark !important;
+        color: #ffffff;
+        text-align: center;
+        line-height: 14px;
+        height: 14px;
+        font-weight: normal;
+        border-style: dotted;
+      }
+    }
+  }
+
+  thead, tfoot {
+    tr {
+      th, td {
+        border-width: 1px;
+        border-style: solid;
+        border-top-color: #ffffff;
+        border-left-color: #c1c1c1;
+        border-right-color: #c1c1c1;
+        border-bottom-color: #c1c1c1;
+        padding: 0 8px;
+        text-align: center;
+
+        &.date {
+          font-size: 0.9em;
+        }
+        &.icons {
+          width: 16px;
+        }
+      }
+
+      th a.ordered {
+        color: inherit;
+
+        span.order-icon {
+          float: right;
+          display: block;
+          right: 0;
+          width: 16px;
+          height: 16px;
+          background-image: url(/assets/ui-icons_222222_256x240.png);
+          background-repeat: no-repeat;
+          background-position: -128px -16px;
+
+          &.asc {
+            background-position-x: 0px;
+          }
+          &.desc {
+            background-position-x: -64px;
+          }
+        }
+      }
+
+      td {
+        font-weight: normal;
+      }
+    }
+
+    tr:not(.separator) {
+      th, td {
+        @include gradient-background(#eeeeee, #dfe1e2);
+        color: $grey;
+        #text-shadow: 0 1px 0 #fff;
+
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td, th {
+        color: $grey;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #dadada;
+        line-height: $tdheight;
+        padding: 4px 8px;
+
+        img {
+          vertical-align: middle;
+        }
+
+        &.handle {
+        }
+
+        &.icons {
+          width: 16px;
+        }
+
+        a.inline-icon {
+          min-height: $tdheight;
+          line-height: $tdheight;
+          #border: solid red 1px;
+        }
+        a.icon {
+          min-height: $tdheight;
+          line-height: $tdheight;
+          #border: solid red 1px;
+        }
+      }
+
+      td.handle {
+        width: 11px;
+        background-image: url(/assets/handle.gif);
+        background-repeat: no-repeat;
+        background-position: 8px 12px;
+      }
+
+      td.justified {
+        text-align: justify;
+      }
+      td.centered {
+        text-align: center;
+      }
+      td.lefted {
+        text-align: left;
+      }
+      td.righted {
+        text-align: right;
+      }
+      td.bolded {
+        font-weight: bold;
+      }
+      td.alert, th.alert, td.alert:hover, th.alert:hover {
+        color: #c09853;
+        background-color: #fcf8e3 !important;
+        border: 1px solid #c09853;
+      }
+    }
+
+    tr.code {
+      height: 160px;
+      vertical-align: top;
+      td {
+        line-height: 20px;
+      }
+    }
+
+    tr:nth-child(odd) {
+      th {
+        background-color: #eceeef;
+      }
+      td {
+        background-color: #f5f5f5;
+      }
+    }
+
+    tr:nth-child(even) {
+      th {
+        background-color: #f0f3f3;
+      }
+      td {
+        background-color: #ffffff;
+      }
+    }
+
+    tr.selected, tr:hover {
+      td, th {
+        color: #000000;
+      }
+    }
+
+    tr.comment td {
+      line-height: 15px;
+      font-size: 11px;
+      border-top-style: dotted;
+      border-top-width: 1px;
+    }
+
+    tr.empty td {
+      line-height: 32px;
+      text-align: center;
+      font-size: 11px;
+    }
+  }
+
+  table.styled {
+    tr {
+      td {
+        line-height: 25px;
+      }
+      th {
+        background-color: #343434;
+        color: white;
+        line-height: 28px;
+      }
+    }
+
+  }
+}
+
+table.layout {
+  width: 100%;
+
+  tbody {
+    tr {
+      td {
+        vertical-align: top;
+        background-color: $very_light;
+      }
+    }
+  }
+}
+
+table.submenu {
+  width: 100%;
+
+  tbody {
+    tr {
+      td {
+        padding: 8px 12px;
+      }
+
+      td.parent {
+        width: 16px;
+      }
+
+      td.header {
+        h1 {
+          padding: 0;
+          margin: 0;
+          font-size: 16px;
+
+          &, & a {
+            color: $grey;
+          }
+        }
+      }
+    }
+  }
+}
+
+// No hover effect
+table.styled.no_hover {
+  tbody {
+    tr {
+      td, th {
+        color: #000;
+      }
+    }
+
+    tr.selected, tr:hover {
+      td, th {
+        color: #000;
+      }
+    }
+  }
+}

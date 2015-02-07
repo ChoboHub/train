@@ -7,7 +7,7 @@
 %hr
 %h2 Comments :
 %br/
--@resource.comments.each do |comment|
+- @resource.comments.each do |comment|
   = comment.commenter
   = comment.body
   = link_to 'Destroy Comment', [comment.post, comment],
@@ -17,18 +17,9 @@
 
 
 %h3 "Add a Comment"
-= form_for([@resource, @resource.comments.build]) do |f|
-  %p
-  = f.label :commenter
-  = f.text_field :commenter
-  %p
-  = f.label :body
-  %p
-  = f.text_area :body
-  %p
-  = f.submit
+= render 'comments/form'
 
 %hr
 = link_to "Edit", edit_post_path(@resource)
 %hr
-= link_to "back", posts_index_path
+= link_to "back", posts_path

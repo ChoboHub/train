@@ -1,18 +1,15 @@
-%html
-  %head
-    %title Blog
-  %body
-    %h1 Welcome to my OP blog
-    -@posting.each do |post|
-      = link_to post.title, post_path(post)
-      %br/
-      = post.content
-      = link_to "Update", edit_post_path(post)
-      = link_to "Delete", post, :confirm => "Are you sure",
-       :method => :delete
-      %br/
-    %hr
-    = link_to "New", new_post_path
-    %br/
-    = link_to "Products", post_products_path(:post_id)
+%h1 Welcome to my OP blog
+%table.styled
+
+  - @posting.each do |post|
+    %tr
+      %td= link_to post.title, post_path(post)
+      %td= post.content
+      %td= link_to "Update", edit_post_path(post)
+      %td= link_to "Delete", post, :confirm => "Are you sure", :method => :delete
+
+%hr
+= link_to "New", new_post_path
+%br/
+= link_to "Products", post_products_path(:post_id)
 

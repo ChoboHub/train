@@ -1,9 +1,4 @@
 Blog::Application.routes.draw do
-  get "users/new"
-
-  get "posts/index"
-
-  resources :users
 
   resources :posts do
     resources :comments

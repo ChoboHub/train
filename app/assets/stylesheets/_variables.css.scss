@@ -1,0 +1,131 @@
+$width:            990px;
+$tdheight:         32px;
+$completionSquare: 10px;
+$radius:           3px;
+$highlight:        #38A;
+/*$light:            #e5e9ea; */
+$very_light:       #ffffff;
+$light:            #e7e9e9;
+$gradient:         #bababa;
+$dark:             #343434;
+$grey:             #6e6e6e;
+$blue:             #4ca6be;
+$light_blue:       #4ca6be;
+$green:            #38A;
+$orange:           #c3613f;
+$red:              #992828;
+$activityBg:       #f9f3e0;
+$background:       #F9F8F8;
+
+
+@mixin rounded($radius: $radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+
+@mixin rotation($degrees) {
+  /* For IE, 0 = 0, 1 = 90, 2 = 180, 3 = 270 */
+  -webkit-transform: rotate($degrees);
+  -moz-transform: rotate($degrees);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=($degrees / 90));
+}
+
+
+@mixin corners-rounded($top-left: 3px, $top-right: 3px, $bottom-right: 3px, $bottom-left: 3px) {
+  @if $top-left != 0 { border-top-left-radius: $top-left; }
+  @if $top-right != 0 { border-top-right-radius: $top-right; }
+  @if $bottom-left != 0 { border-bottom-left-radius: $bottom-left; }
+  @if $bottom-right != 0 { border-bottom-right-radius: $bottom-right; }
+}
+
+
+@mixin gradient-background($from, $to) {
+  background-color: $from;
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(top, $from, $to);
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(top, $from, $to);
+  /* IE 10 */
+  background: -ms-linear-gradient(top, $from, $to);
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(top, $from, $to);
+}
+
+
+@mixin button($border, $from, $to, $color, $hover_border: '', $hover_from: '', $hover_to: '', $hover_color: '', $radius: 3px, $enabled: true) {
+  @include gradient-background($from, $to);
+  @include rounded($radius);
+  display: inline-block;
+  padding: 4px 8px;
+  text-align: center;
+  border-width: 0px;
+  border-style: solid;
+  border-color: $border;
+  color: $color;
+  text-decoration: none;
+  font-size: 1.0em;
+  width: auto;
+  font-weight: normal;
+  line-height: 16px;
+  margin-left: 2px;
+  margin-right: 2px;
+
+  &.selected {
+    color: $hover_color;
+    border-color: $hover_border;
+    @include gradient-background($hover_from, $hover_to);
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    background-color: #000;
+  }
+
+  @if $enabled {
+    &:hover {
+      cursor: hand;
+      cursor: pointer;
+      box-shadow:inset 0 0 4px $dark;
+    }
+  }
+}
+
+// TODO improve CSS
+div.actions a.button {
+  overflow: auto;
+}
+
+
+@mixin filter($border, $from, $color, $hover_border: '', $hover_from: '', $hover_to: '', $hover_color: '') {
+  background-color: $from;
+  display: inline-block;
+  padding: 4px 8px;
+  text-align: center;
+  border-width: 0px;
+  border-style: solid;
+  border-color: $border;
+  color: $color;
+  text-decoration: none;
+  font-size: 1.0em;
+  width: auto;
+  overflow: hidden;
+  font-weight: normal;
+  line-height: 16px;
+
+  &.selected {
+    color: $light;
+    border-color: $hover_border;
+    background-color: $hover_from;
+    font-weight: bold;
+  }
+
+  &:hover {
+    cursor: hand;
+    cursor: pointer;
+    box-shadow:inset 0 0 4px $dark;
+  }
+}
