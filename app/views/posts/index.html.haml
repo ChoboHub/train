@@ -1,7 +1,12 @@
 %h1 Welcome to my OP blog
+
+= link_to 'Important', posts_path(:important => 'true')
+= link_to 'Not Important', posts_path(:important => 'false')
+= link_to 'All', posts_path
+
 %table.styled
 
-  - @posting.each do |post|
+  - @posts.each do |post|
     %tr
       %td= link_to post.title, post_path(post)
       %td{style: (post.important? ? 'color: red ' : nil)}= post.content

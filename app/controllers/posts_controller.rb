@@ -1,13 +1,10 @@
 class PostsController < ApplicationController
   #regarder dans application_controller (part 5 method au comemence de l app)
-   before_filter :set_posting, only: [:index]
-
-   def set_posting
-     raiser "you must overwrite"
-   end
+   before_filter :set_posts, only: [:index]
 
   def index
   end
+
 
   def show
   end
@@ -49,8 +46,11 @@ class PostsController < ApplicationController
     @resource ||= Post.find(params[:id])
   end
 
-  def set_posting
-    @posting ||=  Post.all
+  def set_posts
+    @posts ||=  Post.all
+    if params[:important].present?
+      @posts = Post.where(important: (params[:important] == 'true'))
+    end
   end
 
 end
