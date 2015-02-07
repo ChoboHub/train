@@ -12,4 +12,6 @@ rerun.txt
 # these should all be checked in to normalise the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset
 
-.idea/
+.idea
+.idea/workspace.xml
+

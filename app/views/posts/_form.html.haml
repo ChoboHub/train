@@ -1,11 +1,15 @@
 = form_for @resource do |f|
   %p
-  = f.label :title
-  %br/
-  = f.text_field :title
+    = f.label :title
+    %br/
+    = f.text_field :title
   %p
-  = f.label :content
-  %br/
-  = f.text_field :content
+    = f.label :content
+    %br/
+    = f.text_field :content
   %p
-  = f.submit "Update Post"
+    = f.label :important
+    %br/
+    = f.check_box :important
+  %p
+    = f.submit "Update Post"

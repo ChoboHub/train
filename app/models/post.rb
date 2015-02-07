@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :content, :title
+  attr_accessible :content, :title, :important
 
   validates :title, :content, :presence => true
   validates :title, :length => { :minimum => 2 }
