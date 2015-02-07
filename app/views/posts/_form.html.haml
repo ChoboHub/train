@@ -1,0 +1,11 @@
+= form_for @resource do |f|
+  %p
+  = f.label :title
+  %br/
+  = f.text_field :title
+  %p
+  = f.label :content
+  %br/
+  = f.text_field :content
+  %p
+  = f.submit "Update Post"

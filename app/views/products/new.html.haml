@@ -1,0 +1,15 @@
+= form_for @newproduct do |p|
+  %p
+  = p.label :name
+  %br/
+  = p.text_field :name
+  %p
+  = p.label :price
+  %br/
+  = p.text_field :price
+  %p
+  = p.label :released
+  %br/
+  = p.text_field :released
+  %p
+  = p.submit "Create"

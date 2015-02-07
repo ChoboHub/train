@@ -1,0 +1,21 @@
+%h1 Products
+
+%table
+  %tr
+    %th
+      = sortable "Name"
+      = sortable "Price"
+      = sortable "Released"
+  - for p in @products
+    %tr
+      %td
+        = p.name
+        = p.price
+        = p.released
+
+%hr
+%h3 Create a new Products
+= link_to "New Products", new_post_product_path(:post_id)
+%br/
+%br/
+= link_to "Post", posts_index_path
